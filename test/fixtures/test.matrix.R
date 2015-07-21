@@ -1,7 +1,7 @@
 options( digits = 16 )
 library( jsonlite )
 
-p = 0.5
+p = 0.77
 probs = 0:24 / 25
 y = qgeom( probs, p )
 
