@@ -41,7 +41,7 @@ describe( 'validate', function tests() {
 		}
 	});
 
-	it( 'should return an error if provided a `p` parameter which is not a positive number', function test() {
+	it( 'should return an error if provided a `p` parameter which is not a positive number in the interval (0,1]', function test() {
 		var values, err;
 		 values = [
 			-2,

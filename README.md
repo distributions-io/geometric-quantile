@@ -6,12 +6,12 @@ Quantile Function
 
 The [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for a [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="" data-equation="eq:quantile_function">
-	<img src="" alt="Quantile function for a Geometric distribution.">
+<div class="equation" align="center" data-raw-text="Q(r;p)=\left\lceil \frac{\ln(1-r)}{\ln(1-p)} \right\rceil" data-equation="eq:quantile_function">
+	<img src="https://cdn.rawgit.com/distributions-io/geometric-quantile/5e0e1933652dfe1cf9ff31359657e0f534d45ecc/docs/eqn.svg" alt="Quantile function for a Geometric distribution.">
 	<br>
 </div>
 
-for `0 <= p < 1`, where `p` is the success probability.
+for `0 < r < 1`, where `p` is the success probability.
 
 ## Installation
 
@@ -28,9 +28,9 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 var quantile = require( 'distributions-geometric-quantile' );
 ```
 
-#### quantile( p[, options] )
+#### quantile( r[, options] )
 
-Evaluates the [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for the [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution. `p` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) between `0` and `1`, an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Evaluates the [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for the [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution. `r` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) between `0` and `1`, an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -40,15 +40,15 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 out = quantile( 0.25 );
-// returns
+// returns 0
 
 x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
 out = quantile( x );
-// returns [...]
+// returns [ 0, 0, 0, 1, 2, +Infinity ]
 
 x = new Float32Array( x );
 out = quantile( x );
-// returns Float64Array( [...] )
+// returns Float64Array( [0,0,0,1,2,+Infinity] )
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
@@ -63,9 +63,9 @@ mat = matrix( x, [3,2], 'float32' );
 
 out = quantile( mat );
 /*
-	[
-
-	   ]
+	[ 0 0
+	  0 0
+	  1 2 ]
 */
 ```
 
@@ -84,9 +84,9 @@ A [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution
 var x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
 
 var out = quantile( x, {
-	'p': 2
+	'p': 0.3
 });
-// returns [...]
+// returns [ 0, 0, 1, 2, 4, +Infinity ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
@@ -108,7 +108,7 @@ function getValue( d, i ) {
 var out = quantile( data, {
 	'accessor': getValue
 });
-// returns [...]
+// returns [ 0, 0, 0, 1, 2, +Infinity ]
 ```
 
 
@@ -130,12 +130,12 @@ var out = quantile( data, {
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
-		{'x':[5,]}
+		{'x':[0,0]},
+		{'x':[1,0]},
+		{'x':[2,0]},
+		{'x':[3,1]},
+		{'x':[4,2]},
+		{'x':[5,+Infinity]}
 	]
 */
 
@@ -153,13 +153,13 @@ x = new Float32Array( [0.2,0.4,0.6,0.8] );
 out = quantile( x, {
 	'dtype': 'int32'
 });
-// returns Int32Array( [...] )
+// returns Int32Array( [0,0,1,2] )
 
 // Works for plain arrays, as well...
 out = quantile( [0.2,0.4,0.6,0.8], {
 	'dtype': 'uint8'
 });
-// returns Uint8Array( [...] )
+// returns Uint8Array( [0,0,1,2] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -176,7 +176,7 @@ x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
 out = quantile( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ 0, 0, 0, 1, 2, +Infinity ]
 
 bool = ( x === out );
 // returns true
@@ -196,9 +196,9 @@ out = quantile( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[ 0 0
+	  0 0
+	  1 2 ]
 */
 
 bool = ( mat === out );

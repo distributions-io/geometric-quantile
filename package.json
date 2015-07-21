@@ -29,7 +29,11 @@
     "statistics",
     "stats",
     "cdf",
-    "inverse"
+    "inverse",
+    "failure times",
+    "memoryless property",
+    "discrete",
+    "success probability"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/geometric-quantile/issues"
