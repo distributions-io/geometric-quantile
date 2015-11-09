@@ -4,10 +4,10 @@ Quantile Function
 
 > [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution [quantile function](https://en.wikipedia.org/wiki/Quantile_function).
 
-The [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for a [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
+The [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for a [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="Q(r;p)=\left\lceil \frac{\ln(1-r)}{\ln(1-p)} \right\rceil" data-equation="eq:quantile_function">
-	<img src="https://cdn.rawgit.com/distributions-io/geometric-quantile/5e0e1933652dfe1cf9ff31359657e0f534d45ecc/docs/eqn.svg" alt="Quantile function for a Geometric distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/geometric-quantile/5e0e1933652dfe1cf9ff31359657e0f534d45ecc/docs/eqn.svg" alt="Quantile function for a geometric distribution.">
 	<br>
 </div>
 
@@ -30,7 +30,7 @@ var quantile = require( 'distributions-geometric-quantile' );
 
 #### quantile( r[, options] )
 
-Evaluates the [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for the [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution. `r` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) between `0` and `1`, an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Evaluates the [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for the [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution. `r` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) between `0` and `1`, an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -78,7 +78,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution is a function of 1 parameter(s): `p`(success probability). By default, `p` is equal to `0.5`. To adjust either parameter, set the corresponding option(s).
+A [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution is a function of one parameter: `p`(success probability). By default, `p` is equal to `0.5`. To adjust it, set the corresponding option.
 
 ``` javascript
 var x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
