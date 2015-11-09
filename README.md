@@ -1,6 +1,6 @@
 Quantile Function
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution [quantile function](https://en.wikipedia.org/wiki/Quantile_function).
 
@@ -387,8 +387,8 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/distributions-io/geometric-quantile/master.svg
 [travis-url]: https://travis-ci.org/distributions-io/geometric-quantile
 
-[coveralls-image]: https://img.shields.io/coveralls/distributions-io/geometric-quantile/master.svg
-[coveralls-url]: https://coveralls.io/r/distributions-io/geometric-quantile?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/distributions-io/geometric-quantile/master.svg
+[codecov-url]: https://codecov.io/github/distributions-io/geometric-quantile?branch=master
 
 [dependencies-image]: http://img.shields.io/david/distributions-io/geometric-quantile.svg
 [dependencies-url]: https://david-dm.org/distributions-io/geometric-quantile
